@@ -45,7 +45,7 @@
 
 # STEP 2.5 - CREATE ONTOLOGY USING SEMPY
 * Create the Ontology in my workspace by authoring a notebook "Create_Healthcare_Ontology" that uses Semantic Link Labs to call the REST API 'Create Ontology.'
-* Use the local file "sempy_skills.md" to learn how to create Fabric notebooks
+* Use the local "sempy_notebook" skills file to learn how to create Fabric notebooks
 * Use this documentation to call the REST API: https://learn.microsoft.com/en-us/rest/api/fabric/ontology/items/create-ontology?tabs=HTTP
 
 
