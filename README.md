@@ -29,10 +29,12 @@ I built my custom demo using the following tools:
 * Begin with the [Ontology Playground](https://microsoft.github.io/Ontology-Playground/) to create your own Ontology from scratch, or modify an existing one.
 
 ![Ontology Playground](images/ontology-playground.png)
-* Export your Ontology design as a .RDF file - It's the file icon in the upper-right corner of the Ontology playground
+* Export your Ontology design as a .RDF file - It's the file icon in the upper-right corner of the Ontology playground. 
+
 ![Import Export Ontology](images/ImportExportOntology.png)
 * Fun fact! You can ask M365 Copilot, or ChatGPT, etc. to create an Ontology.rdf file for you using an existing RDF file as a file. 
 * For example, I prompted an LLM for the "Lord of the Rings" ontology using one of the Playground samples as an example. It worked!
+
 ![LOTR Ontology](images/LOTR_query.jpg)
 
 
@@ -57,7 +59,7 @@ EDIT THE GOALS.MD FILE
 
 
 ## CREATE THE ONTOLOGY (and Graph database)
-Moving onto Step 2 and Step 2.5 in Goals.md, now that I had Lakehouse tables built and populated, we can create an Ontology.
+Moving onto Step 2 and Step 2.5 in the GOALS.MD file, now that I had Lakehouse tables built and populated, we can create an Ontology.
 * I didn't want to create a Semantic Model on top of the tables and then an Ontology on top of the semantic model. If I was starting from an existing Power BI semantic model, I likely would have, but starting from Ontology Playground, it seems redundant.
 * In Step 2, I asked for extremely simple click-by-click directions to build the Ontology by hand. I've used the Create Ontology tutorial in the documentation, and kept getting confused over the direction of the relationships, etc. so I wanted an assumption-free, easy-to-follow path through the UI.
     * It was a lot of clicks! 
@@ -72,7 +74,7 @@ Moving onto Step 2 and Step 2.5 in Goals.md, now that I had Lakehouse tables bui
 * Note that Graph DB takes awhile: I resized my F64 up to an F128 for this step, it still seems to take 10-15 minutes before it's ready.
 
 
-## CREATE SOME FUN QUERIES
+## CREATE SOME FUN GRAPH DB QUERIES
 The real power of Ontology and graph databases come from making these friend-of-a-friend-of-a-friend-of-a-friend connetions. When you get to 4 or 5 hops, these queries become near impossible to run in the relational model, yet take seconds (if that) using Graph.
 
 ![Graph query](images/graph-query.png)
@@ -81,7 +83,7 @@ The real power of Ontology and graph databases come from making these friend-of-
 * Graph queries are reproducible, explainable, and auditable - they're GQL statements you can read and re-run. 
 * Contrast that with LLM insights, which are probabilistic, and not necessarily reproducible. 
 So the challenge was on: Can we create fun Graph queries that show this off? 
-* Step 3 of the Goals.md file asked for those queries.
+* Step 3 of the GOALS.MD file asked for those queries.
 * I was surprised to see Copilot struggle to write good Graph queries - I thought it would be easy. Looking at the error messages, I realized there's more than one Graph language on the internet. Microsoft documentation to the rescue! Once I provided the documentation for Fabric's graph language and working example, I got what I wanted - working multi-hop queries.
 * I turned those learnings into the fabric-graphdb-query skill.md so hopefully the next person who has to do this can just reference the skill file and the Copilot will jump to it.
 
@@ -94,5 +96,5 @@ Building the Data Agent itself was incredibly easy
 
 
 * Since we had all this great information about the Ontology itself, the lakehouse tables, and some working graph db queries, it was easy to ask the Copilot to generate an AI Instructions file
-1. Goals.md Step 4 asks for the AI instructions file and adds a few constraints, like the 10,000 character limit for the file
+1. GOALS.MD Step 4 asks for the AI instructions file and adds a few constraints, like the 10,000 character limit for the file
 2. I asked for some sample data agent prompts, to ensure that natural language was aligning with the Ontology contents.
