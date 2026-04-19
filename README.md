@@ -98,3 +98,11 @@ Building the Data Agent itself was incredibly easy
 * Since we had all this great information about the Ontology itself, the lakehouse tables, and some working graph db queries, it was easy to ask the Copilot to generate an AI Instructions file
 1. GOALS.MD Step 4 asks for the AI instructions file and adds a few constraints, like the 10,000 character limit for the file
 2. I asked for some sample data agent prompts, to ensure that natural language was aligning with the Ontology contents.
+
+## HOW THE FILES FIT TOGETHER
+This diagram may be helpful to understand how all the files came together in this repo:
+![Project file struture](images/Project_File_Structure.png)
+* The top swim lane, "**Lakehouse & Data Prep**" shows how GitHub Copilot helped turn Goals.md into workable demo data.
+* The middle lane, "**Fabric Ontology Creation**" show how the Copilot leveraged Ontology.RDF to produce workable step-by-step instructions to create an Ontology and bind it to the Lakehouse tables. 
+* Once I discovered *Rob Kerr's YouTube video* [Using Python to build a Fabric Ontology](https://www.youtube.com/watch?v=s4nW5pnDPck), I knew it was possible for a Fabric python notebook to create an Ontology, I just didn't know how. But after Copilot got sempy_skills.md, a python notebook quickly followed and the Ontology was done.
+* The bottom lane, **"Data Agent Artifacts,"** was about producing queries and prompts that helped illustate the power of graph. Also, Copilot needed to be reminded (grounded) on the data that actually existed. Prompts like "give me sample queries about Providers and their Appointments" naturally led to queries about future appointments: perfectly reasonable, correct syntax, but no results returned because the demo data didn't have future events. 
