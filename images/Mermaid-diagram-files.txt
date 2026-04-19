@@ -1,0 +1,62 @@
+flowchart LR
+
+    %% Left Column: Goals & Inputs
+    subgraph Inputs["Goals & Inputs"]
+        style Inputs fill:#FFF7CC,stroke:#E6D38A
+        Goals[Goals.md]
+        Playground[Ontology Playground]
+        Sempy[sempy_skills.md]
+        Schema[Lakehouse Schema]
+    end
+
+    %% Middle Column: Ontology Authoring
+    subgraph Ontology["Ontology Authoring"]
+        style Ontology fill:#FFF7CC,stroke:#E6D38A
+        RDF[Ontology.RDF]
+    end
+
+    %% Middle Column: Notebook Authoring (visual balance box)
+    subgraph NotebookAuthoring["Notebook Authoring"]
+        style NotebookAuthoring fill:#FFF3B0,stroke:#E6B800,stroke-width:2px
+        SempyNote[sempy_skills.md]
+    end
+
+    %% Right Column: Lakehouse & Data Prep
+    subgraph Lakehouse["Lakehouse & Data Prep"]
+        style Lakehouse fill:#FFF7CC,stroke:#E6D38A
+        LHNotebooks[Lakehouse Notebooks]
+        DemoData[Demo Data]
+    end
+
+    %% Right Column: Fabric Ontology Creation
+    subgraph Fabric["Fabric Ontology Creation"]
+        style Fabric fill:#FFF7CC,stroke:#E6D38A
+        GuiGuide[ontology_gui_guide]
+        Notebook[Create_Healthcare_Ontology.ipynb]
+        FabricOntology[Fabric Ontology]
+    end
+
+    %% Right Column: Data Agent Artifacts
+    subgraph Agents["Data Agent Artifacts"]
+        style Agents fill:#FFF7CC,stroke:#E6D38A
+        Query[Query.md]
+        Prompts[Data_agent_prompts.md]
+        Instructions[Data_agent_instructions.md]
+    end
+
+    %% Flows
+    Playground --> RDF
+    Goals --> LHNotebooks
+    RDF --> LHNotebooks
+    LHNotebooks --> DemoData
+
+    Sempy --> SempyNote
+    RDF --> Notebook
+    SempyNote --> Notebook
+    Notebook --> FabricOntology
+
+    RDF --> GuiGuide --> FabricOntology
+
+    RDF --> Query --> Prompts
+    Schema --> Instructions
+    Query --> Instructions
